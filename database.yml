@@ -1,4 +1,4 @@
-- include: common.yml
+- import_playbook: common.yml
 - hosts: database
   vars:
     - database_deploy_path: /srv/www/quickdocs-database
