@@ -1,6 +1,6 @@
 - name: git clone quickdocs-database
   git:
-    repo=https://github.com/quickdocs/quickdocs-database.git
+    repo=https://github.com/wnortje/quickdocs-database.git
     dest={{ deploy_path }}
     version=master
     recursive=yes
