@@ -1,6 +1,6 @@
 - name: install mysql-server
-  sudo: yes
+  become: yes
   apt: name=mysql-server-5.6 state=present
 - name: install libmysqlclient
-  sudo: yes
+  become: yes
   apt: name=libmysqlclient-dev state=present
