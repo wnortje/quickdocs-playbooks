@@ -1,6 +1,6 @@
 - name: install mysql-server
   become: yes
-  apt: name=mysql-server-5.6 state=present
+  apt: name=mysql-server state=present
 - name: install libmysqlclient
   become: yes
   apt: name=libmysqlclient-dev state=present
