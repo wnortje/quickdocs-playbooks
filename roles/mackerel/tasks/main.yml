@@ -1,5 +1,5 @@
 - name: setup apt
   shell: curl -fsSL https://mackerel.io/assets/files/scripts/setup-apt.sh | sh
 - name: install mackerel-agent
-  sudo: yes
+  become: yes
   apt: name=mackerel-agent state=present

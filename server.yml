@@ -1,4 +1,4 @@
-- include: common.yml
+- import_playbook: common.yml
 - hosts: server
   vars:
     - roswell_version: master

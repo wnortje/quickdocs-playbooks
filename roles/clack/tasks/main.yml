@@ -5,5 +5,5 @@
 - shell: chmod u+x {{ tmpdir }}/clackup.ros
 
 - name: /usr/local/bin/clackup
-  sudo: yes
+  become: yes
   shell: mv {{ tmpdir }}/clackup.ros /usr/local/bin/clackup
