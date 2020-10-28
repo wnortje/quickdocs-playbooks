@@ -19,9 +19,10 @@
     - name: check if docker image exists
       shell: docker images | grep quickdocs/quickdocs-extracter
       register: docker_image_exists
+      ignore_errors: true
     - name: docker build
       shell: scripts/build-docker-image chdir="{{ extracter_deploy_path }}"
-      when: docker_image_exists == false
+      when: docker_image_exists.rc != 0
 
     - name: source-registry configuration directory
       file: path=~/.config/common-lisp/source-registry.conf.d/ state=directory
