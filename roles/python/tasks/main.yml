@@ -1,7 +1,7 @@
-- name: install python 2.7
+- name: install python 3
   become: yes
-  apt: name=python2.7 state=present
+  apt: name=python3 state=present
 
 - name: install pip
   become: yes
-  apt: name=python-pip state=present
+  apt: name=python3-pip state=present

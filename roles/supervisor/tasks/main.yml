@@ -1,6 +1,6 @@
 - name: install supervisor
   become: yes
-  shell: pip install supervisor creates=/usr/bin/supervisord
+  shell: pip3 install supervisor creates=/usr/bin/supervisord
 
 - name: generate /etc/supervisord.conf
   become: yes
