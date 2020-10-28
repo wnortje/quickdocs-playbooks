@@ -1,5 +1,5 @@
 - name: install dependencies
-  sudo: yes
+  become: yes
   apt: name={{ item }} state=present
   with_items:
     - autotools-dev
@@ -13,7 +13,7 @@
   unarchive: src={{ tmpdir }}/roswell-{{ roswell_version }}.tar.gz dest={{ tmpdir }} copy=no
 
 - name: install roswell
-  sudo: yes
+  become: yes
   shell: sh ./bootstrap && ./configure && make && sudo make install
          chdir={{ tmpdir }}/roswell-{{ roswell_version }}
          creates=/usr/local/bin/ros
