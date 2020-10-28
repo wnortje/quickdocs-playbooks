@@ -1,11 +1,12 @@
 - name: install dependencies
   become: yes
-  apt: name={{ item }} state=present
-  with_items:
-    - autotools-dev
-    - automake
-    - libcurl4-gnutls-dev
-
+  apt:
+    name:
+      - autotools-dev
+      - automake
+      - libcurl4-gnutls-dev
+    state: present
+    
 - name: download roswell
   get_url: url={{ roswell_src }} dest={{ tmpdir }}/roswell-{{ roswell_version }}.tar.gz
 
