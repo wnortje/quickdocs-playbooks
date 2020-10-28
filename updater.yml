@@ -6,11 +6,11 @@
     - updater_deploy_path: /srv/www/quickdocs-updater
   pre_tasks:
     - user: name=git home=/srv/git
-      sudo: yes
+      become: yes
     - user: name=www home=/srv/www
-      sudo: yes
+      become: yes
     - shell: chmod 777 /srv/www
-      sudo: yes
+      become: yes
   roles:
     - roswell
     - { role: quickdocs-extracter, deploy_path: "{{ extracter_deploy_path }}" }

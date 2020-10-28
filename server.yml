@@ -6,11 +6,11 @@
     - server_deploy_port: 38080
   pre_tasks:
     - user: name=git home=/srv/git
-      sudo: yes
+      become: yes
     - user: name=www home=/srv/www
-      sudo: yes
+      become: yes
     - shell: chmod 777 /srv/www
-      sudo: yes
+      become: yes
   roles:
     - libev
     - roswell
@@ -43,28 +43,28 @@
              chdir="{{ server_deploy_path }}"
 
     - name: nginx.conf
-      sudo: yes
+      become: yes
       template: src=templates/nginx.conf.j2 dest=/etc/nginx/sites-available/quickdocs
     - name: enable nginx.conf
-      sudo: yes
+      become: yes
       file: src=/etc/nginx/sites-available/quickdocs dest=/etc/nginx/sites-enabled/quickdocs state=link
     - name: restart nginx
-      sudo: yes
+      become: yes
       service: name=nginx state=restarted
 
     - stat: path=/etc/supervisor.d/quickdocs.ini
       register: supervisor_conf
     - name: supervisor configuration file
-      sudo: yes
+      become: yes
       template: src=templates/supervisor.conf.j2 dest=/etc/supervisor.d/quickdocs.ini
       when: not supervisor_conf.stat.exists
     - name: reread supervisord
-      sudo: yes
+      become: yes
       shell: supervisorctl reread
     - name: add to supervisor process group
-      sudo: yes
+      become: yes
       shell: supervisorctl add quickdocs
       when: not supervisor_conf.stat.exists
     - name: restart supervisor
-      sudo: yes
+      become: yes
       shell: supervisorctl update quickdocs

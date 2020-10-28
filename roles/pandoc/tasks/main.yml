@@ -10,6 +10,6 @@
   when: is_pandoc_installed.rc == 1
 
 - name: install pandoc
-  sudo: yes
+  become: yes
   shell: dpkg -i {{ tmpdir }}/pandoc-1.15.0.6-1-amd64.deb
   when: is_pandoc_installed.rc == 1
