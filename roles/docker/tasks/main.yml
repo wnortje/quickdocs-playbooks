@@ -1,6 +1,6 @@
 - name: install the latest docker
   become: yes
-  shell: curl -sSL https://get.docker.com/ubuntu/ | sh
+  shell: curl -sSL https://get.docker.com/ | sh
 
 - name: "add {{ ansible_ssh_user }} to docker group"
   become: yes
